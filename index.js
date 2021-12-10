@@ -7,7 +7,13 @@ const authRoute = require("./routes/auth");
 const productRoute = require("./routes/product");
 const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
+const cors = require("cors");
 
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 dotenv.config();
 
 mongoose
@@ -27,6 +33,5 @@ app.use("/api/orders", orderRoute);
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is running!!");
 });
-
 
 //if deployment connect to server IP
